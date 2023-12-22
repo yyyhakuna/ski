@@ -3,7 +3,7 @@
     padding: 5px 20px;  
     position: absolute;
     color:white;
-    font-size: large;
+    font-size: 1.5rem;
     letter-spacing: 0.5px;
     font-family: button;
     border-radius: 3px;
@@ -60,6 +60,7 @@
     border-radius: 100px;
     font-weight: 600;
     color: white;
+    width: 200px;
     box-shadow: 0 0 0 2px white;
     cursor: pointer;
     overflow: hidden;
@@ -135,4 +136,11 @@
     opacity: 1;
   }
   
-  
+  .connectedBtn{
+    border: 4px solid;
+    width: 220px;
+    height: 220px;
+    font-size: 16px;
+    color: white;
+    box-shadow: 0 0 0 2px white;
+  }

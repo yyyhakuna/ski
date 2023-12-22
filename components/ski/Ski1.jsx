@@ -9,7 +9,7 @@ export default function Ski1() {
     const mesh = obj.scene;
     
     return (
-                <Canvas >
+                <Canvas style={{height:'500px'}}>
                 <PresentationControls
                     speed={1.5}
                     global

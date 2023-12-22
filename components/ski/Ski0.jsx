@@ -20,7 +20,8 @@ export default function Ski0() {
     const mesh = obj.scene;
     
     return (
-                <Canvas >
+                // <div style={{height:'500px'}}>
+                    <Canvas style={{height:'500px'}} >
                     {/* <Render /> */}
                 <PresentationControls
                     speed={1.5}
@@ -40,6 +41,7 @@ export default function Ski0() {
                         </Stage>
                 </PresentationControls>
             </Canvas>
+                // </div>
     )
 }
 
