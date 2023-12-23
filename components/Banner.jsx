@@ -5,7 +5,7 @@ const Banner = () => {
   const [messageApi, contextHolder] = message.useMessage();
   const [adr , setAdr] = useState(null)
   const setState = async()=>{
-    const address = await window.unisat.getAccounts()
+    const address = await window.unisat?.getAccounts()
     setAdr(address[0])
   }
   setState()
@@ -13,7 +13,7 @@ const Banner = () => {
     console.log(adr);
     if(adr){
       return
-    }
+    }9
     if (typeof window.unisat === 'undefined') {
       messageApi.open({
         type: 'error',

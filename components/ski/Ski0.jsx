@@ -1,10 +1,10 @@
 import { useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { PresentationControls, Stage, Text } from '@react-three/drei';
+import { PresentationControls, Stage, Environment} from '@react-three/drei';
 import * as THREE from "three"
 import { useEffect ,useRef} from 'react';
-
+import modalBg from "public/modalBg.jpg"
 function Render(){
     return useFrame((state) => {
     state.scene.position.y=THREE.MathUtils.lerp(0, -80, 0.1);
@@ -23,6 +23,7 @@ export default function Ski0() {
                 // <div style={{height:'500px'}}>
                     <Canvas style={{height:'500px'}} >
                     {/* <Render /> */}
+                    <Environment files="" background />
                 <PresentationControls
                     speed={1.5}
                     global

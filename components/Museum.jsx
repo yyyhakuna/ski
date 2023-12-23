@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { Suspense, lazy, useState } from 'react'
 import styles from 'styles/museum.module.css'
 import Image from 'next/image'
 import ski0 from 'public/ski0.jpg'
@@ -6,11 +6,11 @@ import ski1 from 'public/ski1.png'
 import ski2 from 'public/ski2.jpg'
 import ski3 from 'public/ski3.jpg'
 import ski4 from 'public/ski4.jpg'
-import Ski0 from './ski/Ski0'
-import Ski1 from './ski/Ski1'
-import Ski3 from './ski/Ski3'
-import Ski4 from './ski/Ski4'
-import Ski2 from './ski/Ski2'
+const Ski0 = lazy(()=>import ('./ski/Ski0'))
+const Ski1 = lazy(()=>import ('./ski/Ski1'))
+const Ski2 = lazy(()=>import ('./ski/Ski2'))
+const Ski3 = lazy(()=>import ('./ski/Ski3'))
+const Ski4 = lazy(()=>import ('./ski/Ski4'))
 import { Drawer, Modal } from 'antd'
 const Museum = () => {
   const [open0, setOpen0] = useState(false);
@@ -22,22 +22,22 @@ const Museum = () => {
   const showModal0 = () => {
     setTimeout(() => {
       setOpen0(true)
-    }, 1000);
+    }, 2000);
   }
   const showModal1 = () => {
     setTimeout(() => {
       setOpen1(true)
-    }, 1000);
+    }, 3000);
   };
   const showModal2 = () => {
     setTimeout(() => {
       setOpen2(true)
-    }, 1000);
+    }, 5000);
   };
   const showModal3 = () => {
     setTimeout(() => {
       setOpen3(true)
-    }, 1000);
+    }, 10000);
   };
   const showModal4 = () => {
     setTimeout(() => {
@@ -47,7 +47,7 @@ const Museum = () => {
   return (
     <div>
       <div className={styles.text}>EXCLUSIVE SNOWBOARD</div>
-      <video src="skadi.mp4" autoPlay muted loop  ></video>
+      <video src="skadi.mp4" autoPlay muted loop style={{width:'100vw' ,height:'auto'}}></video>
       <div style={{ height: '1px' }}></div>
       <div className={styles.list}>
         <div className={styles.list_item}>
@@ -73,7 +73,9 @@ const Museum = () => {
           footer={null}
           style={{ height: '1000px' }}
         >
-          <Ski0 />
+          <Suspense>
+            <Ski0 />
+          </Suspense>
         </Modal>
 
         <div className={styles.list_item}>
@@ -98,7 +100,9 @@ const Museum = () => {
           closeIcon={null}
           footer={null}
         >
-          <Ski1 />
+          <Suspense>
+            <Ski1 />
+          </Suspense>
         </Modal>
 
 
@@ -124,7 +128,9 @@ const Museum = () => {
           closeIcon={null}
           footer={null}
         >
-          <Ski2 />
+          <Suspense>
+            <Ski2 />
+          </Suspense>
         </Modal>
 
 
@@ -151,10 +157,10 @@ const Museum = () => {
           closeIcon={null}
           footer={null}
         >
-          <Ski3 />
+          <Suspense>
+            <Ski3 />
+          </Suspense>
         </Modal>
-
-
 
         <div className={styles.list_item}>
           <Image src={ski4} style={{ width: '100%', height: 'auto', }}></Image>
@@ -178,7 +184,9 @@ const Museum = () => {
           closeIcon={null}
           footer={null}
         >
-          <Ski4 />
+          <Suspense>
+            <Ski4 />
+          </Suspense>
         </Modal>
       </div>
     </div>

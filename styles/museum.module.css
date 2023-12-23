@@ -40,7 +40,6 @@
   
   .strong {
     z-index: 2;
-    font-family: 'Avalors Personal Use';
     font-size: 12px;
     letter-spacing: 5px;
     font-family: show;
@@ -198,7 +197,7 @@
     font-family: button;
     position: absolute;
     left:24%;
-    margin-top: 50px;
+    margin-top: 5%;
     font-size: 3rem;
   }
 

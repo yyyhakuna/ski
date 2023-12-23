@@ -2,6 +2,7 @@ import About from "@/components/About";
 const Banner = lazy(()=>import("@/components/Banner"))
 const Museum = lazy(() => import("@/components/Museum"));
 import Logo from '@/components/ui/Logo'
+import Mint from 'components/Mint'
 import { useEffect, useState, lazy, Suspense} from "react";
 const Home = () => {
   const randomIndex = Math.floor(Math.random() * 2);
@@ -25,6 +26,7 @@ const Home = () => {
         <div>
           <Suspense>
             <Banner />
+            <Mint />
             <Museum />
           </Suspense>
           <Logo />
