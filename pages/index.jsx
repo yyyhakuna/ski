@@ -11,19 +11,19 @@ const Home = () => {
   const mintRef = useRef()
   const museumRef = useRef()
   const aboutRef = useRef()
-  // useEffect(() => {
-  //   const video = document.getElementById('video')
-  //   video.addEventListener("ended", () => {
-  //     setShow(() => true)
-  //   })
-  //   return (
-  //     video.removeEventListener("ended", () => {
-  //       setShow(() => true)
-  //     }))
-  // }, [])
+  useEffect(() => {
+    const video = document.getElementById('video')
+    video.addEventListener("ended", () => {
+      setShow(() => true)
+    })
+    return (
+      video.removeEventListener("ended", () => {
+        setShow(() => true)
+      }))
+  }, [])
   return (
     <>
-      {/* {show ? */}
+      {show ?
         <div>
           <Suspense>
             <Banner 
@@ -44,8 +44,8 @@ const Home = () => {
             <About />
           </div>
         </div>
-        {/* : <video id="video" src={"random" + randomIndex + ".mp4"} style={{ width: '100%', height: 'auto', }} autoPlay muted></video>
-      } */}
+        : <video id="video" src={"random" + randomIndex + ".mp4"} style={{ width: '100%', height: 'auto', }} autoPlay muted></video>
+      } 
     </>
   )
 }

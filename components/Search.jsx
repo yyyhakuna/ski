@@ -22,6 +22,7 @@ const Search = () => {
           </button>
         </div>
         <Ski1 />
+      <video src="skadi.mp4" autoPlay muted loop style={{width:'100vw' ,height:'auto'}}></video>
     </div>
   )
 }

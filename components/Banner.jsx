@@ -15,13 +15,19 @@ const Banner = (props) => {
   const clickNav = e=>{
     switch(e.target.textContent){
         case 'MINT':
-            props.mintRef.current.scrollIntoView();
+            props.mintRef.current.scrollIntoView({
+              behavior: 'smooth' 
+            });
             break;
         case 'MUSEUM':
-            props.museumRef.current.scrollIntoView();
+            props.museumRef.current.scrollIntoView({
+              behavior: 'smooth' 
+            });
             break;
         case 'ABOUT':
-            props.aboutRef.current.scrollIntoView();
+            props.aboutRef.current.scrollIntoView({
+              behavior: 'smooth' 
+            });
             break;
     }
 }
