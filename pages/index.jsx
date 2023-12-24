@@ -38,11 +38,12 @@ const Home = () => {
               <Museum />
             </div>
             <Search />
-          </Suspense>
-          <Logo />
+            <Logo />
           <div ref={aboutRef}>
             <About />
           </div>
+          </Suspense>
+          
         </div>
         : <video id="video" src={"random" + randomIndex + ".mp4"} style={{ width: '100%', height: 'auto', }} autoPlay muted></video>
       } 
