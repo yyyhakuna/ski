@@ -9,12 +9,12 @@ export default function Ski1() {
     const mesh = obj.scene;
     
     return (
-                <Canvas style={{height:'500px'}}>
+                <Canvas style={{height:'500px' }}>
+                    <color attach="background" args={['black']} />
                 <PresentationControls
                     speed={1.5}
-                    global
+                    global={true}
                     zoom={0.7}
-                    snap={true}
                     polar={[-0.1, Math.PI , Math.PI]}
                 >
                         <Stage intensity={0.1}>

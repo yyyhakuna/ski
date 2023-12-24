@@ -11,14 +11,14 @@ const Ski1 = lazy(()=>import ('./ski/Ski1'))
 const Ski2 = lazy(()=>import ('./ski/Ski2'))
 const Ski3 = lazy(()=>import ('./ski/Ski3'))
 const Ski4 = lazy(()=>import ('./ski/Ski4'))
-import { Drawer, Modal } from 'antd'
+import {  Modal } from 'antd'
 const Museum = () => {
+  const width = document.body.clientWidth
   const [open0, setOpen0] = useState(false);
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [open3, setOpen3] = useState(false);
   const [open4, setOpen4] = useState(false);
-  const [showLoading, setShowLoadinng] = useState(true)
   const showModal0 = () => {
     setTimeout(() => {
       setOpen0(true)
@@ -46,11 +46,11 @@ const Museum = () => {
   };
   return (
     <div>
-      <div className={styles.text}>EXCLUSIVE SNOWBOARD</div>
+      <div className={styles.text} style={{display: width<767?'none' : 'block'}}>EXCLUSIVE SNOWBOARD</div>
       <video src="skadi.mp4" autoPlay muted loop style={{width:'100vw' ,height:'auto'}}></video>
       <div style={{ height: '1px' }}></div>
       <div className={styles.list}>
-        <div className={styles.list_item}>
+        <div className={styles.list_item} style={{display:width<600?'none':'flex'}}>
           <Image src={ski0} style={{ width: '100%', height: 'auto', }}></Image>
           <button className={styles.btn} type="button" onClick={showModal0}>
             <strong className={styles.strong}>SHOW 3D</strong>
@@ -71,7 +71,11 @@ const Museum = () => {
           width={1000}
           closeIcon={null}
           footer={null}
-          style={{ height: '1000px' }}
+          // styles={{
+          //   header: {
+          //     backgroundColor: 'red'  
+          //   }
+          // }}
         >
           <Suspense>
             <Ski0 />

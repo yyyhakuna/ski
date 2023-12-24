@@ -17,3 +17,10 @@
     font-size: medium;
     margin-left: 30px;
 }
+
+@media (max-Width:767px){
+    .tittle{
+        font-size: 1.5rem;
+    }
+    
+}

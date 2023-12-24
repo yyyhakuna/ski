@@ -24,9 +24,9 @@
     text-shadow: rgba(140, 0, 255, 0.9) 0px 0px 20px;
     background-size: 400%;
     display: block;
+    font-family: 'button';
     margin-right: auto;
     margin-left: auto;
-    font-family: "Montserrat", sans-serif;
   }
   
   .button:hover {
@@ -59,8 +59,26 @@
     }
   }
   
+  .desc{
+    margin: auto;
+    text-align: center;
+    color: white;
+    width: 50%;
+  }
   
+  .time{
+    margin: auto;
+    text-align: center;
+    color: white;
+  }
 
 .card{
     width: 20%;
+}
+
+@media (max-Width:767px){
+  .tittle{
+      font-size: 1.5rem;
+  }
+  
 }

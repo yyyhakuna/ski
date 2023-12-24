@@ -5,11 +5,19 @@ import { PresentationControls, Stage, } from '@react-three/drei';
 import * as THREE from "three"
 
 function Render() {
+    let x;
+    let y;
+    const onMouseMove = event=>{
+        x = (event.clientX-320)/100
+        y = (event.clientY-550)/100
+    }
     return useFrame(state => {
-        // document.addEventListener('mousemove', onMouseMove, false)
-        state.scene.position.x = THREE.MathUtils.lerp(0, -45, 0.1);
-        state.scene.position.y = THREE.MathUtils.lerp(0, -13, 0.1);
-        // console.log(state.scene.position.x);
+        state.camera.position.y= THREE.MathUtils.lerp(0,-7,0.1)
+        document.addEventListener('mousemove', onMouseMove, false)
+        state.scene.position.x = THREE.MathUtils.lerp(0, -20, 0.1);
+        state.scene.position.y = THREE.MathUtils.lerp(0, -20, 0.1);
+        state.scene.rotation.y = THREE.MathUtils.lerp(0, x, 0.1);
+        state.scene.rotation.x = THREE.MathUtils.lerp(0, y, 0.1);
     })
 }
 
@@ -40,7 +48,6 @@ export default function logo() {
                 </Stage>
             </PresentationControls>
         </Canvas>
-
     )
 }
 

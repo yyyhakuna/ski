@@ -1,39 +1,51 @@
 import About from "@/components/About";
-const Banner = lazy(()=>import("@/components/Banner"))
+import Search from "@/components/Search";
+const Banner = lazy(() => import("@/components/Banner"))
 const Museum = lazy(() => import("@/components/Museum"));
 import Logo from '@/components/ui/Logo'
 import Mint from 'components/Mint'
-import { useEffect, useState, lazy, Suspense} from "react";
+import { useEffect, useState, lazy, Suspense, useRef } from "react";
 const Home = () => {
   const randomIndex = Math.floor(Math.random() * 2);
-  const[show, setShow] = useState(false)
-  useEffect(() => {
-    const video = document.getElementById('video')
-    video.addEventListener("ended", ()=> {
-      setShow(()=>true)
-    })
-    document.addEventListener('DOMContentLoaded', () => {
-      console.log('bbb');
-    });
-    return(
-      video.removeEventListener("ended", ()=> {
-        setShow(()=>true)
-      }))
-  },[])
+  const [show, setShow] = useState(false)
+  const mintRef = useRef()
+  const museumRef = useRef()
+  const aboutRef = useRef()
+  // useEffect(() => {
+  //   const video = document.getElementById('video')
+  //   video.addEventListener("ended", () => {
+  //     setShow(() => true)
+  //   })
+  //   return (
+  //     video.removeEventListener("ended", () => {
+  //       setShow(() => true)
+  //     }))
+  // }, [])
   return (
     <>
-      {show ?
+      {/* {show ? */}
         <div>
           <Suspense>
-            <Banner />
-            <Mint />
-            <Museum />
+            <Banner 
+            mintRef={ mintRef}
+            museumRef = {museumRef}
+            aboutRef = {aboutRef}
+            />
+            <div ref={mintRef}>
+              <Mint />
+            </div>
+            <div ref={museumRef}>
+              <Museum />
+            </div>
+            <Search />
           </Suspense>
           <Logo />
-          <About />
+          <div ref={aboutRef}>
+            <About />
+          </div>
         </div>
-        : <video id="video" src={"random" + randomIndex + ".mp4"} style={{width:'100%' , height:'auto' , }} autoPlay muted></video>
-      }
+        {/* : <video id="video" src={"random" + randomIndex + ".mp4"} style={{ width: '100%', height: 'auto', }} autoPlay muted></video>
+      } */}
     </>
   )
 }

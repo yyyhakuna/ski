@@ -1,23 +1,40 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from 'styles/banner.module.css'
 import {message} from 'antd'
-const Banner = () => {
+import { useFetch } from '@/hooks/useFetch'
+const Banner = (props) => {
   const [messageApi, contextHolder] = message.useMessage();
   const [adr , setAdr] = useState(null)
+  const width = document.body.clientWidth
   const setState = async()=>{
     const address = await window.unisat?.getAccounts()
-    setAdr(address[0])
+    if(address){
+      setAdr(address[0])
+    }
   }
+  const clickNav = e=>{
+    switch(e.target.textContent){
+        case 'MINT':
+            props.mintRef.current.scrollIntoView();
+            break;
+        case 'MUSEUM':
+            props.museumRef.current.scrollIntoView();
+            break;
+        case 'ABOUT':
+            props.aboutRef.current.scrollIntoView();
+            break;
+    }
+}
   setState()
   const connect = async () => {
     console.log(adr);
     if(adr){
       return
-    }9
+    }
     if (typeof window.unisat === 'undefined') {
       messageApi.open({
         type: 'error',
-        content: 'This is an error message',
+        content: 'Please Install Unisat',
       });
     }
     try {
@@ -27,6 +44,18 @@ const Banner = () => {
       console.log('connect failed');
     }
   }
+  useEffect(()=>{
+    const minted = useFetch('getUserByAddr' , 'post' , 
+    {
+      "a": 0,
+      "address": `${adr}`,
+      "b": 0,
+      "c": 0,
+      "txid": "string"
+    }).then(
+      res=>console.log(res)
+    ).catch(err=>{console.log(err);})
+  },[adr])
 
   const formatAddress= (address)=>{
     return `${address.substring(0,4)}...${address.substring(address.length-4)}`
@@ -34,10 +63,10 @@ const Banner = () => {
   return (
     <div>
       {contextHolder}
-      <button className={styles.button} style={{ margin: '0 3%' }}>MUSEUM</button>
-      <button className={styles.button} style={{ margin: '0 33%' }}>MUSEUM</button>
-      <button className={styles.button} style={{ margin: '0 63%' }}>MUSEUM</button>
-      <button className={styles.connectBtn} style={{ margin: '5% 80%' }} onClick={connect}>
+      <button className={styles.button} style={{ margin: '0 3%' }} onClick={clickNav}>MINT</button>
+      <button className={styles.button} style={{ margin: '0 33%', display: width < 768 ? 'none' : 'inline-block' }} onClick={clickNav}>MUSEUM</button>
+      <button className={styles.button} style={{ margin: width<676?'0 50%':'0 63%'}} onClick={clickNav}>ABOUT</button>
+      <button className={width<767?styles.connectBtnPhone:styles.connectBtn} style={{ margin: '5% 80%'}} onClick={connect}>
         {adr?'':<svg viewBox="0 0 24 24" className={styles.arr_2} xmlns="http://www.w3.org/2000/svg">
           <path
             d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"

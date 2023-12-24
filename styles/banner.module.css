@@ -144,3 +144,23 @@
     color: white;
     box-shadow: 0 0 0 2px white;
   }
+
+  @media (max-width: 767px) {
+    .button{
+      font-size: 10px;
+      top:23%
+    }
+    .connectBtnPhone {
+      width: 100px;
+      font-size: 10px;
+      position: absolute;
+      left: -80px;
+      border: 1px solid;
+      border-radius: 100px;
+      color: white;
+    }
+    .connectBtnPhone svg {
+      width: 0;
+      height: 0;
+    }
+  }
