@@ -1,6 +1,6 @@
 .container{
     background-image: url('/bg.png');
-    height: 700px;
+    height: 600px;
 }
 
 .tittle{
@@ -22,5 +22,10 @@
     .tittle{
         font-size: 1.5rem;
     }
-    
+    .desc{
+        width: 80%;
+    }
+    .container{
+        height: 1000px;
+    }
 }

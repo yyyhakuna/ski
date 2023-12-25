@@ -16,10 +16,10 @@ const Home = () => {
     video.addEventListener("ended", () => {
       setShow(() => true)
     })
-    return (
-      video.removeEventListener("ended", () => {
-        setShow(() => true)
-      }))
+    // return (
+    //   video.removeEventListener("ended", () => {
+    //     setShow(() => true)
+    //   }))
   }, [])
   return (
     <>
@@ -37,13 +37,12 @@ const Home = () => {
             <div ref={museumRef}>
               <Museum />
             </div>
-            <Search />
+            {/* <Search /> */}
             <Logo />
           <div ref={aboutRef}>
             <About />
           </div>
           </Suspense>
-          
         </div>
         : <video id="video" src={"random" + randomIndex + ".mp4"} style={{ width: '100%', height: 'auto', }} autoPlay muted></video>
       } 

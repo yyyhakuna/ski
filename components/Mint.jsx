@@ -8,10 +8,8 @@ const Mint = () => {
     <div className={styles.container}>
       {contextHolder}
       <video src='/logo.mp4' width="50%" autoPlay muted loop style={{margin:'auto'}}/>
-      <div className={styles.desc}>Welcome to Skadi Club! We are an innovative team dedicated to creating a premier snowboarding community for the young and adventurous in the web3 era.
-        At Skadi Club, our core philosophy revolves around merging real-world snowboarding experiences with blockchain technology. Through our NFT club card
+      <div className={styles.desc}>Step into the future of snowboarding. Own a digital masterpiece with our exclusive NFT snowboard collection. Each board is a unique work of art, digitally crafted and authenticated on the blockchain. Experience the thrill of owning a limited edition NFT snowboard that embodies the spirit of adventure and innovation. 
       </div>
-      <div className={styles.time}>Time:09.01-09.12</div>
       <button className={styles.button} onClick={async() => {
          const Enable =await useFetch('getEnable', 'get')
           if(!Enable.data.enable){
@@ -23,6 +21,7 @@ const Mint = () => {
       }}>
         Mint
       </button>
+      <div className={styles.time}>Time:09.01-09.12</div>
     </div>
   )
 }

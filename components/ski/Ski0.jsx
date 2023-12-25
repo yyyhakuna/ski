@@ -22,7 +22,7 @@ export default function Ski0() {
                 // <div style={{height:'500px'}}>
                     <Canvas style={{height:'500px' }} >
                     {/* <Render /> */}
-                    <color attach="background" args={['black']} />
+                    <color attach="background" args={['#13130c']} />
                 <PresentationControls
                     speed={1.5}
                     global={false}
@@ -30,7 +30,7 @@ export default function Ski0() {
                     snap={true}
                     polar={[0, 0 , 0]}
                 >
-                    <Stars saturation={0} count={400} speed={0.5} />
+                    {/* <Stars saturation={0} count={400} speed={0.5} /> */}
                         <Stage intensity={0.1}>
                             <primitive
                                 ref={ref}

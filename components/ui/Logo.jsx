@@ -4,6 +4,7 @@ import { Canvas, } from '@react-three/fiber';
 import { PresentationControls, Stage, } from '@react-three/drei';
 import * as THREE from "three"
 
+
 function Render() {
     let x;
     let y;
@@ -22,13 +23,13 @@ function Render() {
 }
 
 export default function logo() {
-
+    const width = document.body.width
     const obj = useLoader(GLTFLoader, 'logo.glb');
     // 获取模型场景对象
     const mesh = obj.scene;
 
     return (
-        <Canvas style={{ position: 'absolute' }}>
+        <Canvas style={{ position: 'absolute' , display:`${width<767?'none':'flex'}`}}>
             <Render />
             <PresentationControls
                 speed={1.5}

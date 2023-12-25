@@ -209,4 +209,7 @@
     .list {
       display: none;
     }
+    .text{
+      display: none;
+    }
   }
