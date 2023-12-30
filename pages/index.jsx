@@ -1,4 +1,5 @@
 import About from "@/components/About";
+import MyInscriptionns from "@/components/MyInscriptions";
 import Search from "@/components/Search";
 const Banner = lazy(() => import("@/components/Banner"))
 const Museum = lazy(() => import("@/components/Museum"));
@@ -10,16 +11,17 @@ const Home = () => {
   const [show, setShow] = useState(false)
   const mintRef = useRef()
   const museumRef = useRef()
+  // const [inscriptions , setInscriptions] = useState(null)
   const aboutRef = useRef()
   useEffect(() => {
     const video = document.getElementById('video')
     video.addEventListener("ended", () => {
       setShow(() => true)
     })
-    // return (
-    //   video.removeEventListener("ended", () => {
-    //     setShow(() => true)
-    //   }))
+    return (
+      video.removeEventListener("ended", () => {
+        setShow(() => true)
+      }))
   }, [])
   return (
     <>
@@ -37,7 +39,7 @@ const Home = () => {
             <div ref={museumRef}>
               <Museum />
             </div>
-            {/* <Search /> */}
+            <Search />
             <Logo />
           <div ref={aboutRef}>
             <About />

@@ -15,6 +15,7 @@ export default function Ski1() {
                     speed={1.5}
                     global={true}
                     zoom={0.7}
+                    snap={true}
                     polar={[-0.1, Math.PI , Math.PI]}
                 >
                         <Stage intensity={0.1}>

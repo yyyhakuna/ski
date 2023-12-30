@@ -31,9 +31,7 @@ const Banner = (props) => {
             break;
     }
 }
-  setState()
   const connect = async () => {
-    console.log(adr);
     if(adr){
       return
     }
@@ -50,22 +48,24 @@ const Banner = (props) => {
       console.log('connect failed');
     }
   }
-  useEffect(()=>{
-    const minted = useFetch('getUserByAddr' , 'post' , 
-    {
-      "a": 0,
-      "address": `${adr}`,
-      "b": 0,
-      "c": 0,
-      "txid": "string"
-    }).then(
-      res=>console.log(res)
-    ).catch(err=>{console.log(err);})
-  },[adr])
 
   const formatAddress= (address)=>{
     return `${address.substring(0,4)}...${address.substring(address.length-4)}`
   }
+
+  const getInscriptions =async ()=>{
+    const ids =await window.unisat.getInscriptions(0,1000)
+    // props.setInscriptions(ids)
+
+  }
+
+  useEffect(()=>{
+    setState()
+  },[])
+
+  useEffect( ()=>{
+    getInscriptions()
+  } ,[adr])
   return (
     <div>
       {contextHolder}

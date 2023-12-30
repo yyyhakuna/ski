@@ -10,6 +10,8 @@ export default function Ski4() {
     
     return (
                 <Canvas style={{height:'500px'}}>
+                    <color attach="background" args={['#13130c']} />
+
                 <PresentationControls
                     speed={1.5}
                     global
