@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from 'styles/search.module.css'
 import {Input} from 'antd'
-import Ski1 from './ski/Ski1'
+import Ski5 from './ski/Ski5'
 const Search = () => {
     const search = ()=>{}
   return (
@@ -21,7 +21,7 @@ const Search = () => {
             </div>
           </button>
         </div>
-        <Ski1 />
+        <Ski5 />
     </div>
   )
 }

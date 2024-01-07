@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import styles from 'styles/banner.module.css'
 import {message} from 'antd'
 import { useFetch } from '@/hooks/useFetch'
+import Image from 'next/image'
+import BannerImg from 'public/banner.jpg'
 const Banner = (props) => {
   const [messageApi, contextHolder] = message.useMessage();
   const [adr , setAdr] = useState(null)
@@ -56,7 +58,6 @@ const Banner = (props) => {
   const getInscriptions =async ()=>{
     const ids =await window.unisat.getInscriptions(0,1000)
     // props.setInscriptions(ids)
-
   }
 
   useEffect(()=>{
@@ -69,16 +70,16 @@ const Banner = (props) => {
   return (
     <div>
       {contextHolder}
-      <button className={styles.button} style={{ margin: '0 3%' }} onClick={clickNav}>MINT</button>
-      <button className={styles.button} style={{ margin: '0 33%', display: width < 768 ? 'none' : 'inline-block' }} onClick={clickNav}>MUSEUM</button>
-      <button className={styles.button} style={{ margin: width<676?'0 50%':'0 63%'}} onClick={clickNav}>ABOUT</button>
+      <button className={styles.button} style={{ margin: '0 3%' ,top: width<676?'40%':'80%'}} onClick={clickNav}>MINT</button>
+      <button className={styles.button} style={{ margin: '0 31%', display: width < 768 ? 'none' : 'inline-block' ,top: width<676?'40%':'80%'}} onClick={clickNav}>MUSEUM</button>
+      <button className={styles.button} style={{ margin: width<676?'0 50%':'0 63%' ,top: width<676?'40%':'80%'}} onClick={clickNav}>ABOUT</button>
       <button className={width<767?styles.connectBtnPhone:styles.connectBtn} style={{ margin: '5% 80%'}} onClick={connect}>
         {adr?'':<svg viewBox="0 0 24 24" className={styles.arr_2} xmlns="http://www.w3.org/2000/svg">
           <path
             d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
           ></path>
         </svg>}
-        <span className={styles.text}>{adr?formatAddress(adr):'Connect Wallet'}</span>
+        <span className={styles.text}>{adr?formatAddress(adr):'Connect  Wallet'}</span>
         <span className={styles.circle}></span>
         {adr?'':<svg viewBox="0 0 24 24" className={styles.arr_1} xmlns="http://www.w3.org/2000/svg">
           <path
@@ -86,7 +87,7 @@ const Banner = (props) => {
           ></path>
         </svg>}
       </button>
-      <video src='sp.mp4' autoPlay muted loop style={{ pointerEvents: 'none', width: '100%', height: 'auto' }} />
+      {width<767?(<Image src={BannerImg}></Image>):(<video src='sp.mp4' autoPlay muted loop style={{ pointerEvents: 'none', width: '100%', height: 'auto' }} />)}
     </div>
   )
 }

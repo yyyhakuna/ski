@@ -6,6 +6,7 @@ import ski1 from 'public/ski1.png'
 import ski2 from 'public/ski2.jpg'
 import ski3 from 'public/ski3.jpg'
 import ski4 from 'public/ski4.jpg'
+import Skadi  from 'public/skadi.png'
 const Ski0 = lazy(()=>import ('./ski/Ski0'))
 const Ski1 = lazy(()=>import ('./ski/Ski1'))
 const Ski2 = lazy(()=>import ('./ski/Ski2'))
@@ -45,15 +46,17 @@ const Museum = () => {
     }, 1000);
   };
   return (
-    <div>
+    <div style={{backgroundColor:'#13130c'}}>
       <div className={styles.text} style={{display: width<767?'none' : 'block'}}>EXCLUSIVE SNOWBOARD</div>
-      <video src="skadi.mp4" autoPlay muted loop style={{width:'100vw' ,height:'auto'}}></video>
+      <div className={styles.line}></div>
+      {width<767?(<Image src={Skadi}></Image>):(<video src="skadi.mp4" autoPlay muted  loop style={{width:'100vw' ,height:'auto' }}></video>)}
+      <div className={styles.Wline}></div>
       <div style={{ height: '1px' }}></div>
       <div className={styles.list}>
         <div className={styles.list_item} style={{display:width<600?'none':'flex'}}>
           <Image src={ski0} style={{ width: '100%', height: 'auto', }}></Image>
           <button className={styles.btn} type="button" onClick={showModal0}>
-            <strong className={styles.strong}>SHOW 3D</strong>
+            <strong className={styles.strong}>3D VERSION</strong>
             <div className={styles.container_stars}>
               <div className={styles.stars}></div>
             </div>
@@ -64,18 +67,13 @@ const Museum = () => {
             </div>
           </button>
         </div>
-        <Modal title="Modal"
+        <Modal
           centered={false}
           open={open0}
           onCancel={() => setOpen0(false)}
           width={1000}
           closeIcon={null}
           footer={null}
-          // styles={{
-          //   header: {
-          //     backgroundColor: 'red'  
-          //   }
-          // }}
         >
           <Suspense>
             <Ski0 />
@@ -83,9 +81,9 @@ const Museum = () => {
         </Modal>
 
         <div className={styles.list_item}>
-          <Image src={ski1} style={{ width: '100%', height: 'auto', }}></Image>
+          <Image src={ski1} style={{ width: '150%', height: 'auto', }}></Image>
           <button className={styles.btn} type="button" onClick={showModal1}>
-            <strong className={styles.strong}>SHOW 3D</strong>
+            <strong className={styles.strong}>3D VERSION</strong>
             <div className={styles.container_stars}>
               <div className={styles.stars}></div>
             </div>
@@ -96,7 +94,7 @@ const Museum = () => {
             </div>
           </button>
         </div>
-        <Modal title="Modal"
+        <Modal
           centered={false}
           open={open1}
           onCancel={() => setOpen1(false)}
@@ -113,7 +111,7 @@ const Museum = () => {
         <div className={styles.list_item}>
           <Image src={ski2} style={{ width: '100%', height: 'auto', }}></Image>
           <button className={styles.btn} type="button" onClick={showModal2}>
-            <strong className={styles.strong}>SHOW 3D</strong>
+            <strong className={styles.strong}>3D VERSION</strong>
             <div className={styles.container_stars}>
               <div className={styles.stars}></div>
             </div>
@@ -124,7 +122,7 @@ const Museum = () => {
             </div>
           </button>
         </div>
-        <Modal title="Modal"
+        <Modal
           centered={false}
           open={open2}
           onCancel={() => setOpen2(false)}
@@ -142,7 +140,7 @@ const Museum = () => {
         <div className={styles.list_item}>
           <Image src={ski3} style={{ width: '100%', height: 'auto', }}></Image>
           <button className={styles.btn} type="button" onClick={showModal3}>
-            <strong className={styles.strong}>SHOW 3D</strong>
+            <strong className={styles.strong}>3D VERSION</strong>
             <div className={styles.container_stars}>
               <div className={styles.stars}></div>
             </div>
@@ -153,7 +151,7 @@ const Museum = () => {
             </div>
           </button>
         </div>
-        <Modal title="Modal"
+        <Modal
           centered={false}
           open={open3}
           onCancel={() => setOpen3(false)}
@@ -169,7 +167,7 @@ const Museum = () => {
         <div className={styles.list_item}>
           <Image src={ski4} style={{ width: '100%', height: 'auto', }}></Image>
           <button className={styles.btn} type="button" onClick={showModal4}>
-            <strong className={styles.strong}>SHOW 3D</strong>
+            <strong className={styles.strong}>3D VERSION</strong>
             <div className={styles.container_stars}>
               <div className={styles.stars}></div>
             </div>
@@ -180,7 +178,7 @@ const Museum = () => {
             </div>
           </button>
         </div>
-        <Modal title="Modal"
+        <Modal
           centered={false}
           open={open4}
           onCancel={() => setOpen4(false)}

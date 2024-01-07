@@ -16,6 +16,7 @@
     width: 70%;
     font-size: medium;
     margin-left: 30px;
+    font-family: view;
 }
 
 @media (max-Width:767px){
@@ -26,6 +27,11 @@
         width: 80%;
     }
     .container{
-        height: 1000px;
+        height: auto;
     }
+}
+
+@font-face {
+    font-family: about;
+    src: url('/about.ttf');
 }

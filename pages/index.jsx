@@ -1,19 +1,25 @@
 import About from "@/components/About";
-import MyInscriptionns from "@/components/MyInscriptions";
 import Search from "@/components/Search";
 const Banner = lazy(() => import("@/components/Banner"))
 const Museum = lazy(() => import("@/components/Museum"));
-import Logo from '@/components/ui/Logo'
 import Mint from 'components/Mint'
 import { useEffect, useState, lazy, Suspense, useRef } from "react";
 const Home = () => {
+  const width = document.body.clientWidth
   const randomIndex = Math.floor(Math.random() * 2);
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(()=>{
+    if(width<767){
+      return true
+    }else{
+      return false
+    }
+  })
   const mintRef = useRef()
   const museumRef = useRef()
   // const [inscriptions , setInscriptions] = useState(null)
   const aboutRef = useRef()
   useEffect(() => {
+    if(!show){
     const video = document.getElementById('video')
     video.addEventListener("ended", () => {
       setShow(() => true)
@@ -22,6 +28,7 @@ const Home = () => {
       video.removeEventListener("ended", () => {
         setShow(() => true)
       }))
+    }
   }, [])
   return (
     <>
@@ -40,7 +47,7 @@ const Home = () => {
               <Museum />
             </div>
             <Search />
-            <Logo />
+            {/* <Logo /> */}
           <div ref={aboutRef}>
             <About />
           </div>

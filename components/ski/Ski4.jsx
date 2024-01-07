@@ -24,7 +24,7 @@ export default function Ski4() {
                                 object={mesh}
                                 position={[0, 0, 0]}
                                 rotation={[1 ,-1, 0]}
-                                scale = {[0.066050429, 0.066050429, 0.066050429]}
+                                scale = {[0.056050429, 0.056050429, 0.056050429]}
                             />
                         </Stage>
                 </PresentationControls>

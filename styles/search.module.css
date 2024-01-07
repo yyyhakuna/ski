@@ -16,6 +16,7 @@
     gap:'3px';
     justify-content: center;
     display: flex;
+    font-family: view;
 }
 
 .btn {
@@ -51,8 +52,7 @@
   .strong {
     z-index: 2;
     font-size: 12px;
-    letter-spacing: 5px;
-    font-family: show;
+    letter-spacing: 2px;
     color: #FFFFFF;
     text-shadow: 0 0 4px white;
   }
@@ -185,5 +185,11 @@
     100% {
       transform: scale(0.75);
       box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+  }
+
+  @media (max-Width:767px){
+    .container{
+      display: none;
     }
   }
