@@ -1,7 +1,7 @@
 import { useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { PresentationControls, Stage, Environment ,Stars} from '@react-three/drei';
+import { PresentationControls, Stage} from '@react-three/drei';
 import * as THREE from "three"
 import { useRef} from 'react';
 function Render(){
@@ -14,8 +14,6 @@ function Render(){
 
 export default function Ski0() {
     const obj = useLoader(GLTFLoader, 'ski0.glb');
-    // 获取模型场景对象
-    const ref = useRef();
     const mesh = obj.scene;
     
     return (
@@ -33,7 +31,6 @@ export default function Ski0() {
                     {/* <Stars saturation={0} count={400} speed={0.5} /> */}
                         <Stage intensity={0.1}>
                             <primitive
-                                ref={ref}
                                 object={mesh}
                                 position={[0, 0, 0]}
                                 rotation={[1 ,-1, 0]}

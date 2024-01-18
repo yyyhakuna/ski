@@ -1,9 +1,30 @@
-import React from 'react'
+import React ,{useEffect ,useState}from 'react'
 import styles from 'styles/search.module.css'
 import {Input} from 'antd'
-import Ski5 from './ski/Ski5'
+import Ski5 from '@/components/ski/Ski5'
 const Search = () => {
     const search = ()=>{}
+    // const [Ski5, setSki5] = useState(null);
+
+  // useEffect(() => {
+  //   let observer;
+  //   if (Ski5) {
+  //     return; 
+  //   }
+
+  //   observer = new IntersectionObserver(entries => {
+  //     if (entries[0].isIntersecting) {
+  //       import('@/components/ski/Ski5').then(cmp => {
+  //         setSki5(cmp.default);
+  //         observer.disconnect();
+  //       });  
+  //     }
+  //   });
+
+  //   observer.observe(document.querySelector('#ski5'));
+
+  //   return () => observer.disconnect();
+  // }, [Ski5]);
   return (
     <div className={styles.container}>
         <div className={styles.tittle}>SEARCH SPECIFIC SNOWBOARD</div>
@@ -21,6 +42,7 @@ const Search = () => {
             </div>
           </button>
         </div>
+        {/* {Ski5 ?<Ski5 id='ski5'/>:'loading'} */}
         <Ski5 />
     </div>
   )

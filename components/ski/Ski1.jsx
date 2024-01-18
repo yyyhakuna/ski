@@ -18,14 +18,15 @@ export default function Ski1() {
                     snap={true}
                     polar={[-0.1, Math.PI , Math.PI]}
                 >
-                        <Stage intensity={0.1}>
+                        {/* <Stage >
                             <primitive
                                 object={mesh}
                                 position={[0, 0, 0]}
                                 rotation={[1 ,-1, 0]}
                                 scale = {[0.056050429, 0.056050429, 0.056050429]}
                             />
-                        </Stage>
+                        </Stage> */}
+                        <mesh />
                 </PresentationControls>
             </Canvas>
 

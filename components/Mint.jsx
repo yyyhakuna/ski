@@ -4,6 +4,9 @@ import Image from 'next/image'
 import { message } from 'antd'
 import Logo from 'public/logo.png'
 import { useFetch } from '@/hooks/useFetch'
+import {ethers} from 'ethers'
+import { useContract } from '@/hooks/useContract'
+import ABI from 'abi/abi.json'
 const Mint = () => {
   const [messageApi, contextHolder] = message.useMessage();
   const width = document.body.clientWidth
@@ -24,50 +27,69 @@ const Mint = () => {
     return AddrList[randomIndex]
   }
   const mint = async () => {
-    const address = await window.unisat?.getAccounts()
-    if (!address[0]) {
+    const provider = new ethers.providers.Web3Provider(window.ethereum)
+    const accounts = await provider.listAccounts();
+    const {chainId} = await provider.getNetwork();
+    if(!accounts.length){
       messageApi.open({
         type: 'error',
-        content: "Pleases Connect Your UniSat Wallet",
+        content: "Pleases Connect Your Wallet",
       })
       return;
     }
-    const minted = await useFetch('getUserByAddr', 'post',
-      {
-        "a": 0,
-        "address": `${address}`,
-        "b": 0,
-        "c": 0,
-        "txid": "string"
-      })
-    if (minted.data.b) {
-      messageApi.open({
-        type: 'error',
-        content: "You Have Minted",
-      })
-      return;
-    }
-    const Enable = await useFetch('getEnable', 'get')
-    if (!Enable.data.enable) {
-      messageApi.open({
-        type: 'error',
-        content: "Minting not yet available.",
-      });
-      return;
-    }
-    let txid = await window.unisat.sendBitcoin(getPayAddress(),800000)
-    await useFetch('addUserPay', 'post',
-      {
-        "a": 0,
-        "address": `${address}`,
-        "b": 0,
-        "c": 0,
-        "txid": `${txid}`
-      })
-      messageApi.open({
-        type:'success',
-        content:"Mint Successfully"
-      })
+    console.log(chainId);
+    // if(chainId!==5){
+    //   await window.ethereum.request({
+    //     method:'wallet_switchEthereumChain',
+    //     params:[{chainId:'0x5'}]
+    //   })
+    // }
+    const contract = useContract('0xB06f6E0Dc870bA58f4592b53d887d036A11e04C8',ABI)
+    console.log(contract.TOTAL_SUPPLY().then(data=>console.log(data)));
+    // const address = await window.unisat?.getAccounts()
+    // if (!address[0]) {
+      // messageApi.open({
+      //   type: 'error',
+      //   content: "Pleases Connect Your UniSat Wallet",
+      // })
+      // return;
+    // }
+    // const minted = await useFetch('getUserByAddr', 'post',
+    //   {
+    //     "a": 0,
+    //     "address": `${accounts[0]}`,
+    //     "b": 0,
+    //     "c": 0,
+    //     "txid": "string"
+    //   })
+    // if (minted.data.b) {
+    //   messageApi.open({
+    //     type: 'error',
+    //     content: "You Have Minted",
+    //   })
+    //   return;
+    // }
+    // const Enable = await useFetch('getEnable', 'get')
+    // if (!Enable.data.enable) {
+    //   messageApi.open({
+    //     type: 'error',
+    //     content: "Minting not yet available.",
+    //   });
+    //   return;
+    // }
+    // let txid = await window.unisat.sendBitcoin(getPayAddress(),800000)
+  //   await useFetch('addUserPay', 'post',
+  //     {
+  //       "a": 0,
+  //       "address": `${address}`,
+  //       "b": 0,
+  //       "c": 0,
+  //       "txid": `${txid}`
+  //     })
+  //     messageApi.open({
+  //       type:'success',
+  //       content:"Mint Successfully"
+  //     })
   }
   return (
     <div className={styles.container}>
@@ -79,6 +101,7 @@ const Mint = () => {
       <button className={styles.button} onClick={mint}>
         Mint
       </button>
+      <Progress percent={50} status="active" />
       <div className={styles.time}>Time:01.12-01.13</div>
     </div>
   )
