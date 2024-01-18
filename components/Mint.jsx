@@ -7,6 +7,7 @@ import { useFetch } from '@/hooks/useFetch'
 import {ethers} from 'ethers'
 import { useContract } from '@/hooks/useContract'
 import ABI from 'abi/abi.json'
+import { Progress } from 'antd';
 const Mint = () => {
   const [messageApi, contextHolder] = message.useMessage();
   const width = document.body.clientWidth
@@ -101,7 +102,7 @@ const Mint = () => {
       <button className={styles.button} onClick={mint}>
         Mint
       </button>
-      <Progress percent={50} status="active" />
+      <Progress percent={70} status="active" trailColor='red'/>
       <div className={styles.time}>Time:01.12-01.13</div>
     </div>
   )
