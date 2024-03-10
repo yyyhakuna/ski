@@ -8,6 +8,7 @@ import { ethers } from 'ethers'
 import { useContract } from '@/hooks/useContract'
 import { Progress } from 'antd';
 import ABI from 'abi/abi.json'
+import { Progress } from 'antd';
 const Mint = () => {
   const [messageApi, contextHolder] = message.useMessage();
   const width = document.body.clientWidth
