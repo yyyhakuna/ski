@@ -10,9 +10,11 @@ const Banner = (props) => {
   const width = document.body.clientWidth
   const provider = new ethers.providers.Web3Provider(window.ethereum)
   const setState = async () => {
-    const accounts = await provider.listAccounts();
+    if(provider){
+      const accounts = await provider.listAccounts();
     if (accounts) {
       setAdr(accounts[0])
+    }
     }
   }
   const clickNav = e => {
@@ -35,9 +37,9 @@ const Banner = (props) => {
     }
   }
   // const connect = async () => {
-    // if (adr) {
-    //   return
-    // }
+  //   if (adr) {
+  //     return
+  //   }
   //   if (typeof window.unisat === 'undefined') {
   //     messageApi.open({
   //       type: 'error',
@@ -64,10 +66,10 @@ const Banner = (props) => {
       return
     }
     await provider.send('eth_requestAccounts' ,[])
-  //   await window.ethereum.request({
-  //     method: 'wallet_switchEthereumChain',
-  //     params: [{ chainId: '0x1' }], // 0x1是以太坊的链id
-  // })
+    await window.ethereum.request({
+      method: 'wallet_switchEthereumChain',
+      params: [{ chainId: '0x1' }], // 0x1是以太坊的链id
+  })
     const accounts =await provider.listAccounts()
     setAdr(accounts[0])
   }

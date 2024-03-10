@@ -22,12 +22,13 @@ export const useFetch =async (api ,method, args)=>{
         headers: {
           "accept": "*/*",
           "Content-Type": "application/json",
+          'mode': 'no-cors' ,
           "ttToken": myEncrypt(),
         },
         body:JSON.stringify(
             args&&{...args}
           )
-      })
+      }).catch(error=>{console.log(error);})
     const jsonRes =await result.json()
     return jsonRes
 }
