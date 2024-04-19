@@ -1,7 +1,7 @@
 import About from "@/components/About";
 const Banner = lazy(() => import("@/components/Banner"))
 const Museum = lazy(() => import("@/components/Museum"));
-const Logo = import("@/components/ui/Logo")
+const Logo = lazy(()=> import("@/components/ui/Logo"))
 import Mint from 'components/Mint'
 // import Search from "@/components/Search";
 import { useEffect, useState, lazy, Suspense, useRef } from "react";
